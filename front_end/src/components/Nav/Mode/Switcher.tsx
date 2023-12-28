@@ -34,7 +34,7 @@ const Switcher = () => {
         {theme === "dark" ? (
           <MdDarkMode className="text-3xl text-white" />
         ) : (
-          <MdLightMode  className="text-3xl text-black" />
+          <MdLightMode  className="text-3xl text-gray-200" />
         )}
       </motion.button>
     </div>

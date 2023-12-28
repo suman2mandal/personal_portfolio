@@ -3,6 +3,11 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import {Award} from "./models/awards.model.js";
+import {Project} from "./models/projects.model.js";
+import {Skills} from "./models/skills.model.js";
+import {Certificates} from "./models/certificates.model.js";
+import {Blogposts} from "./models/blogposts.model.js";
+import {Education} from "./models/education.model.js";
 try{
     dotenv.config();
     const app = express();
@@ -21,9 +26,28 @@ try{
         }
     })();
 
-
-    app.get('/', async (req, res) => {
-        const alltodo = await Award.find();
+    app.get('/Award', async (req, res) => {
+        const allawards = await Award.find();
+        res.send(allawards);
+    })
+    app.get('/Education', async (req, res) => {
+        const alleducations = await Education.find();
+        res.send(alleducations);
+    })
+    app.get('/Projects', async (req, res) => {
+        const allprojects = await Project.find();
+        res.send(allprojects);
+    })
+    app.get('/Skills', async (req, res) => {
+        const allskills = await Skills.find();
+        res.send(allskills);
+    })
+    app.get('/Certificates', async (req, res) => {
+        const allcertificates = await Certificates.find();
+        res.send(allcertificates);
+    })
+    app.get('/BlogPosts', async (req, res) => {
+        const alltodo = await Blogposts.find();
         res.send(alltodo);
     })
 

@@ -92,7 +92,7 @@ function Footer() {
         </div>
       </div>
       <div className="flex justify-center text-gray-500 dark:text-gray-500">
-        Designed And Developed by Suman and Subham
+        Designed And Developed by Suman Mandal
       </div>
     </>
   );

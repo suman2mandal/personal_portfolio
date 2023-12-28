@@ -1,26 +1,41 @@
-import React from "react";
+"use client";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import HedingWrapper from "@/components/Wrapper/HedingWrapper";
+import axios from "axios";
+import {backend} from "@/constants/constant";
 
 function AllCirtificates() {
+  const [certificate,setCertificate] = useState([]);
+  useEffect(() => {
+    (async () => {
+      try {
+        // Make sure to invoke the axios call and set the state
+        const response = await axios.get(`${backend}/Certificates`);
+        setCertificate(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    })();
+  }, []);
+
+  // console.log(certificate,"certificate");
   // @ts-ignore
-  function ProjectTemplate({ image, title, description, link }) {
-    const projectItems = image.map((images: string, index: number) => (
-      <div
-        key={index}
-        className="flex bg-white rounded-md border border-slate-200"
-      >
+  function ProjectTemplate({ key,image,date, title, description, link }) {
+      return (
+          <div key={key}
+        className="flex bg-white rounded-md border border-slate-200">
         <div className="flex-1 p-10">
-          <h3 className="text-xl font-medium text-gray-700">{title[index]}</h3>
-          <p className="mt-2 text-slate-500">{description[index]}</p>
-          <a href={link[index]} className="mt-2 inline-flex text-sky-500">
+          <h3 className="text-xl font-medium text-gray-700">{title}</h3>
+          <p className="mt-2 text-slate-500">{description}</p>
+          <a href={link} className="mt-2 inline-flex text-sky-500">
             Read More →
           </a>
         </div>
         <div className="relative hidden h-full w-1/3 overflow-hidden lg:block">
           <div className="absolute inset-0">
             <Image
-              src={image[index]}
+              src={image}
               width={100}
               height={100}
               sizes="200vw"
@@ -30,9 +45,7 @@ function AllCirtificates() {
           </div>
         </div>
       </div>
-    ));
-
-    return <>{projectItems}</>;
+    );
   }
 
   // const image:string = "https://d33wubrfki0l68.cloudfront.net/e5290c26cc1703e54e0afe3d1472046098ecd819/53775/new/landing/live-chat.png";
@@ -81,12 +94,17 @@ function AllCirtificates() {
       </HedingWrapper>
       <div className="flex min-h-screen items-center justify-center p-10">
         <div className="container grid max-w-screen-xl gap-8 lg:grid-cols-2 lg:grid-rows-2">
-          <ProjectTemplate
-            image={images}
-            title={titles}
-            description={descriptions}
-            link={link}
-          />
+          {certificate.map((item:any,index:number) => {
+            return (
+                <ProjectTemplate
+                    key={index}
+                    image={item.image}
+                    date={item.date}
+                    title={item.name}
+                    description={item.description}
+                    link={item.link}
+                 />)
+              }) }
         </div>
       </div>
     </div>
