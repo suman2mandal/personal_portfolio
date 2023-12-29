@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/front_end/:asset*",
+      "destination": "https://your-project.vercel.app/:asset*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
