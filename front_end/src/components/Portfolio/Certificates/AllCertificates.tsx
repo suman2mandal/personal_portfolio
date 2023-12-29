@@ -34,14 +34,14 @@ function AllCirtificates() {
         </div>
         <div className="relative hidden h-full w-1/3 overflow-hidden lg:block">
           <div className="absolute inset-0">
-            <Image
+              <Image
               src={image}
-              width={100}
-              height={100}
-              sizes="200vw"
-              style={{ width: "100%", height: "100%",objectFit: "cover", objectPosition: "left" }}
-              alt=""
-            />
+            width={100}
+            height={100}
+            sizes="200vw"
+            style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "left"}}
+            alt=""
+          />
           </div>
         </div>
       </div>

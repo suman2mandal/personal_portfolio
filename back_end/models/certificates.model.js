@@ -17,10 +17,6 @@ const certificateSchema = new Schema({
     },
     grade: {
         type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        minlength: 3
     },
     date: {
         type: String,
@@ -31,10 +27,6 @@ const certificateSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        minlength: 3
     },
     link: {
         type: String,
