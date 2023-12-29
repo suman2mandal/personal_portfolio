@@ -1,6 +1,0 @@
-"scripts": {
-  "dev": "next front_end dev",
-  "build": "next build front_end",
-  "start": "next start front_end",
-  "lint": "next lint front_end"
-}
